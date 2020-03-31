@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Entrega_2
@@ -10,9 +11,8 @@ namespace Entrega_2
         {
 
         }
-
+        public string[] valores = { };
         List<string> cancionero = new List<string>();
-        List<string> solocancion = new List<string>();
         public bool AgregarCancion(string cancion)
         {
 
@@ -36,76 +36,83 @@ namespace Entrega_2
         
         public string[] CancionesPorCriterio(string criterio, string valor)
         {
-            int i = 0;
-            if (criterio == "Genero")
+            
+
+
+            if (criterio == "genero")
             {
-                while (i < cancionero.Count)
+                Console.WriteLine("hola");
+                for (int j = 0; j < cancionero.Count; j++)
                 {
-                    if (cancionero[i].Contains(valor))
+                    Console.WriteLine("entro");
+                    if (cancionero[j].Contains(valor))
                     {
-                        Console.WriteLine(cancionero[i]);
-                        solocancion.Add(cancionero[i]);
-                        i++;
+                        Console.WriteLine(cancionero[j]);
+                        valores.Append(cancionero[j]);
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("Valor no valido.");
+                    }
+                }              
+            }
+
+            if (criterio == "artista")
+            {
+                for (int j = 0; j < cancionero.Count; j++)
+                {
+                    if (cancionero[j].Contains(valor))
+                    {
+                        valores.Append(cancionero[j]);
+                        Console.WriteLine(cancionero[j]);
                     }
                     else
                     {
-                        i++;
+                        Console.WriteLine("Valor no valido.");
                     }
                 }
             }
 
-            if (criterio == "Artista")
-            {
-                 while (i < cancionero.Count)
-                 {
-                      if (cancionero[i].Contains(valor))
-                      {
-                          Console.WriteLine(cancionero[i]);
-                          solocancion.Add(cancionero[i]);
-                          i++;
-                      }
-                      else
-                      {
-                          i++;
-                      }
-                 }
-            }
 
-
-            if (criterio == "Album")
+            if (criterio == "album")
             {
-                while (i < cancionero.Count)
+                for (int j = 0; j < cancionero.Count; j++)
                 {
-                    if (cancionero[i].Contains(valor))
+                    if (cancionero[j].Contains(valor))
                     {
-                        Console.WriteLine(cancionero[i]);
-                        solocancion.Add(cancionero[i]);
-                        i++;
+                        valores.Append(cancionero[j]);
+                        Console.WriteLine(cancionero[j]);
                     }
+
                     else
                     {
-                        i++;
+                        Console.WriteLine("Valor no valido");
                     }
                 }
             }
 
 
-            if (criterio == "Cancion")
+            if (criterio == "cancion")
             {
-                while (i < cancionero.Count)
+                for (int j = 0; j < cancionero.Count; j++)
                 {
-                     if (cancionero[i].Contains(valor))
-                     {
-                            Console.WriteLine(cancionero[i]);
-                            solocancion.Add(cancionero[i]);
-                            i++;
-                     }
-                     else
-                     {
-                         i++;
-                     }
+                    if (cancionero[j].Contains(valor))
+                    {
+                        valores.Append(cancionero[j]);
+                        Console.WriteLine(cancionero[j]);
+                    }
+                    else 
+                    {
+                        Console.WriteLine("Valor no valido");
+                    }
                 }
             }
+            else
+            {
+                Console.WriteLine("Este criterio no existe");
+            }
+            return valores;
         }
     }
 }
